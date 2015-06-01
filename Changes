@@ -3,3 +3,6 @@ Revision history for Perl extension Business::PL::NIP.
 0.01  Sun Dec 25 2014
 	- original version
 
+0.02 Mon Jun 1 2015
+    - removed OOP interface, documentation improvements.
+

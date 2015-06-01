@@ -7,20 +7,13 @@ use Exporter::Easy ( OK => [ qw(is_valid_nip) ] );
 use Carp qw(croak);
 use List::Util qw(sum);
 
-our $VERSION = '0.01';
-
-sub new {
-    my ( $class, %args ) = @_;
-
-    bless \%args => $class;
-}
+our $VERSION = '0.02';
 
 my @weights = qw(6 5 7 2 3 4 5 6 7);
 
-sub is_valid {
-    my ($self,%args) = @_;
+sub is_valid_nip {
 
-    my $nip = $self->{nip} || $args{nip};
+    my $nip = shift;
 
     croak "No NIP number provided" unless $nip;
     $nip =~ s/^PL//;
@@ -36,12 +29,6 @@ sub is_valid {
     return $verify_check_sum == $check_sum;
 }
 
-
-sub is_valid_nip {
-    my $nip = shift;
-
-    return __PACKAGE__->new->is_valid(nip => $nip);
-}
 
 
 1;
@@ -59,15 +46,9 @@ Business::PL::NIP
 
     my $is_valid = is_valid_nip(1234567890);
 
-
-    # OOP interface
-    my $nip = Business::PL::NIP->new();
-
-    my $is_valid = $nip->is_valid(nip => 1234567890);
-
 =head1 DESCRIPTION
 
-NIP is a Polish tax identification number. 
+NIP is a Polish tax identification number, assigned out to business entities by Polish Ministry of Finance.
 
 This module provides a method for checking whether the given number is a valid NIP.
 
