@@ -13,11 +13,6 @@ SYNOPSIS
     my $is_valid = is_valid_nip(1234567890);
 
 
-    # OOP interface
-    my $nip = Business::PL::NIP->new();
-
-    my $is_valid = $nip->is_valid(nip => 1234567890);
-
 DESCRIPTION
 
 NIP is a Polish tax identification number. 
