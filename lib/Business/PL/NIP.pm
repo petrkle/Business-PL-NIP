@@ -7,7 +7,7 @@ use Exporter::Easy ( OK => [ qw(is_valid_nip) ] );
 use Carp qw(croak);
 use List::Util qw(sum);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my @weights = qw(6 5 7 2 3 4 5 6 7);
 
@@ -17,7 +17,7 @@ sub is_valid_nip {
 
     croak "No NIP number provided" unless $nip;
     $nip =~ s/^PL//;
-    croak "NIP number invalid" unless $nip =~ /^[0-9]{10}$/;
+    return unless $nip =~ /^[0-9]{10}$/;
 
     my @nip       = split "", $nip;
     my $check_sum = pop @nip;
